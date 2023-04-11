@@ -2,11 +2,12 @@
 import Subheader from "../components/Subheader.astro";
 import Layout from "../layouts/Layout.astro";
 import P from "../components/P.astro";
+import Card from "../components/Card.astro";
 ---
 
 <Layout title="Sebastian Świderski">
   <main class="flex justify-center py-2">
-    <div class="w-full px-4 text-xl md:max-w-4xl">
+    <div class="w-full px-4 text-xl md:max-w-6xl">
       <div class="flex justify-center py-2">
         <img
           src="me.png"
@@ -19,6 +20,21 @@ import P from "../components/P.astro";
         My name is Sebastian. I'm an Implementation Consultant, currently
         working at FIS Global. Welcome to my personal website!
       </P>
+      <Subheader>Featured projects</Subheader>
+      <div class="grid grid-cols-1 gap-4 py-2 md:grid-cols-2">
+        <Card title="Workout Tracker">
+          A workout tracker where users can keep track of their workouts 🏋️‍♂️
+        </Card>
+        <Card title="Chess">
+          A console program where two players can face off in a game of chess ♟
+        </Card>
+        <Card title="Taskmaster">
+          A taskmaster app, allowing users to track any tasks they need to do 📝
+        </Card>
+        <Card title="Personal Website">
+          This website! Powered by Astro 🚀 and Tailwind 🕊
+        </Card>
+      </div>
     </div>
   </main>
 </Layout>
