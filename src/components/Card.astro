@@ -4,16 +4,34 @@ import Subheader from "./Subheader.astro";
 
 export interface Props {
   title: string;
+  github: string;
+  website?: string;
 }
 
-const { title } = Astro.props;
+const { title, github, website } = Astro.props;
 ---
 
 <div
-  class="rounded-lg border-2 border-gray-900 bg-slate-600 px-4 py-2 drop-shadow-lg md:duration-150 md:hover:ring-2 md:hover:ring-lime-900 md:hover:ease-in"
+  class="group relative overflow-hidden rounded-lg border-2 border-gray-900 bg-gradient-to-b from-slate-500 to-slate-600 px-4 py-2 drop-shadow-lg md:duration-150 md:hover:ring-2 md:hover:ring-lime-900 md:hover:ease-in"
 >
   <Subheader>{title}</Subheader>
   <P>
     <slot />
   </P>
+  <div
+    class="absolute -translate-x-4 -translate-y-4 pb-96 pl-4 pr-[1000px] pt-20 group-hover:opacity-90 md:group-hover:-translate-y-36 md:group-hover:bg-black md:group-hover:transition md:group-hover:duration-150"
+  >
+    <span>
+      <a href={github} target="_blank" rel="noreferrer noopener"> GitHub</a>
+    </span>
+    {
+      website ? (
+        <span>
+          <a href={website} target="_blank" rel="noreferrer noopener">
+            Website
+          </a>
+        </span>
+      ) : null
+    }
+  </div>
 </div>
