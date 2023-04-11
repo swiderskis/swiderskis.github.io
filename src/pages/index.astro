@@ -1,5 +1,7 @@
 ---
+import Subheader from "../components/Subheader.astro";
 import Layout from "../layouts/Layout.astro";
+import P from "../components/P.astro";
 ---
 
 <Layout title="Sebastian Świderski">
@@ -12,11 +14,11 @@ import Layout from "../layouts/Layout.astro";
           class="h-48 w-48 rounded-full drop-shadow-lg"
         />
       </div>
-      <h3 class="py-2 text-3xl font-semibold">Hi!</h3>
-      <p class="py-2">
+      <Subheader>Hi!</Subheader>
+      <P>
         My name is Sebastian. I'm an Implementation Consultant, currently
         working at FIS Global.
-      </p>
+      </P>
     </div>
   </main>
 </Layout>
