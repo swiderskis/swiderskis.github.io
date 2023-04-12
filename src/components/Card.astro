@@ -14,13 +14,9 @@ const { title, github, website } = Astro.props;
 <div
   class="group relative overflow-hidden rounded-lg border-2 border-gray-900 bg-gradient-to-b from-slate-500 to-slate-600 px-4 py-2 drop-shadow-lg duration-150 lg:hover:ring-2 lg:hover:ring-lime-900 lg:hover:ease-in"
 >
-  <Subheader>{title}</Subheader>
-  <P>
-    <slot />
-  </P>
   {/* Desktop */}
   <div
-    class="absolute hidden h-full w-full -translate-x-4 translate-y-4 border-4 border-black bg-black text-center text-opacity-100 opacity-80 ring-4 ring-black lg:block lg:group-hover:-translate-y-[95%] lg:group-hover:transition lg:group-hover:duration-150"
+    class="absolute hidden h-full w-full -translate-x-4 translate-y-full border-4 border-black bg-black text-center text-opacity-100 opacity-80 ring-4 ring-black lg:block lg:group-hover:-translate-y-2 lg:group-hover:transition lg:group-hover:duration-150"
   >
     <div class="flex h-full items-center justify-center">
       <a
@@ -40,7 +36,6 @@ const { title, github, website } = Astro.props;
           ></path>
         </svg>
       </a>
-
       {
         website ? (
           <>
@@ -71,4 +66,8 @@ const { title, github, website } = Astro.props;
       }
     </div>
   </div>
+  <Subheader>{title}</Subheader>
+  <P>
+    <slot />
+  </P>
 </div>
