@@ -20,31 +20,35 @@ const { title, github, website } = Astro.props;
   </P>
   {/* Desktop */}
   <div
-    class="absolute hidden -translate-x-4 -translate-y-4 px-56 pb-20 pr-60 pt-12 text-opacity-100 opacity-80 group-hover:-translate-y-36 group-hover:bg-black group-hover:transition group-hover:duration-150 lg:block"
+    class="absolute hidden h-full w-full -translate-x-4 translate-y-4 border-4 border-black bg-black text-center text-opacity-100 opacity-80 ring-4 ring-black group-hover:-translate-y-[95%] group-hover:transition group-hover:duration-150 lg:block"
   >
-    <span class="select-none">
-      <a
-        href={github}
-        target="_blank"
-        rel="noreferrer noopener"
-        class="text-3xl"
-      >
-        GitHub
-      </a>
-    </span>
-    {
-      website ? (
-        <span class="select-none">
+    <div class="flex h-full items-center justify-center">
+      <div>
+        <span class="w-full select-none">
           <a
-            href={website}
+            href={github}
             target="_blank"
             rel="noreferrer noopener"
-            class="text-3xl "
+            class="text-3xl"
           >
-            Website
+            GitHub
           </a>
         </span>
-      ) : null
-    }
+        {
+          website ? (
+            <p class="select-none">
+              <a
+                href={website}
+                target="_blank"
+                rel="noreferrer noopener"
+                class="text-3xl"
+              >
+                Website
+              </a>
+            </p>
+          ) : null
+        }
+      </div>
+    </div>
   </div>
 </div>
