@@ -5,10 +5,11 @@ import Subheader from "./Subheader.astro";
 export interface Props {
   title: string;
   github: string;
+  builtUsing: string[];
   website?: string;
 }
 
-const { title, github, website } = Astro.props;
+const { title, github, website, builtUsing } = Astro.props;
 ---
 
 <div
@@ -100,5 +101,14 @@ const { title, github, website } = Astro.props;
   <Subheader>{title}</Subheader>
   <P>
     <slot />
+  </P>
+  <P>
+    Built using {
+      builtUsing
+        .slice(0, builtUsing.length - 1)
+        .map((element) => `${element}${builtUsing.length === 2 ? "" : ", "}`)
+    }
+    {builtUsing.length === 1 ? "" : " and "}
+    {builtUsing.slice(-1)}
   </P>
 </div>

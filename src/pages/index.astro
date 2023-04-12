@@ -3,6 +3,49 @@ import Subheader from "../components/Subheader.astro";
 import Layout from "../layouts/Layout.astro";
 import P from "../components/P.astro";
 import Card from "../components/Card.astro";
+
+type CardObject = {
+  title: string;
+  github: string;
+  website: string | undefined;
+  builtUsing: string[];
+  description: string;
+};
+
+const projects: CardObject[] = [
+  {
+    title: "Workout Tracker",
+    github: "https://github.com/swiderskis/workout-tracker-client",
+    website: "https://workout-tracker.swider.ski/",
+    builtUsing: ["React ⚛", "Express 📶", "PostgreSQL 🗃"],
+    description:
+      "A workout tracker app, allowing gymgoers can keep track of their workouts 🏋️‍♂️",
+  },
+  {
+    title: "Chess",
+    github: "https://github.com/swiderskis/chess-improved",
+    website: undefined,
+    builtUsing: ["C++ 💻"],
+    description:
+      "A console program, allowing two players face off in a game of chess ♟",
+  },
+  {
+    title: "Taskmaster",
+    github: "https://github.com/swiderskis/flask-taskmaster-webapp",
+    website: undefined,
+    builtUsing: ["Flask 🧪", "SQLAlchemy ⚗"],
+    description:
+      "A taskmaster app, allowing busy people to maintain a to-do list 📝",
+  },
+  {
+    title: "Personal Website",
+    github: "https://github.com/swiderskis/chess-improved",
+    website: "https://www.swider.ski/",
+    builtUsing: ["Astro 🚀", "Tailwind 🕊"],
+    description:
+      "The website you're looking at now! Powered by GitHub Pages 📄",
+  },
+];
 ---
 
 <Layout title="Sebastian Świderski">
@@ -22,33 +65,18 @@ import Card from "../components/Card.astro";
       </P>
       <Subheader>Featured projects</Subheader>
       <div class="grid grid-cols-1 gap-4 py-2 md:grid-cols-2">
-        <Card
-          title="Workout Tracker"
-          github="https://github.com/swiderskis/workout-tracker-client"
-          website="https://workout-tracker.swider.ski/"
-        >
-          A workout tracker app, allowing gymgoers can keep track of their
-          workouts 🏋️‍♂️
-        </Card>
-        <Card
-          title="Chess"
-          github="https://github.com/swiderskis/chess-improved"
-        >
-          A console program, allowing two players face off in a game of chess ♟
-        </Card>
-        <Card
-          title="Taskmaster"
-          github="https://github.com/swiderskis/flask-taskmaster-webapp"
-        >
-          A taskmaster app, allowing busy people to maintain a to-do list 📝
-        </Card>
-        <Card
-          title="Personal Website"
-          github="https://github.com/swiderskis/swiderskis.github.io"
-          website="https://www.swider.ski/"
-        >
-          The website you're on now! Powered by Astro 🚀 and Tailwind 🕊
-        </Card>
+        {
+          projects.map((element) => (
+            <Card
+              title={element.title}
+              github={element.github}
+              website={element.website}
+              builtUsing={element.builtUsing}
+            >
+              {element.description}
+            </Card>
+          ))
+        }
       </div>
     </div>
   </main>
