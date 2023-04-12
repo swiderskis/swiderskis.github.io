@@ -12,7 +12,7 @@ const { title, github, website } = Astro.props;
 ---
 
 <div
-  class="group relative overflow-hidden rounded-lg border-2 border-gray-900 bg-gradient-to-b from-slate-500 to-slate-600 px-4 py-2 drop-shadow-lg duration-150 hover:ring-2 hover:ring-lime-900 hover:ease-in"
+  class="group relative overflow-hidden rounded-lg border-2 border-gray-900 bg-gradient-to-b from-slate-500 to-slate-600 px-4 py-2 drop-shadow-lg duration-150 focus:ring-2 focus:ring-lime-900 focus:ease-in lg:hover:ring-2 lg:hover:ring-lime-900 lg:hover:ease-in"
 >
   <Subheader>{title}</Subheader>
   <P>
@@ -20,7 +20,7 @@ const { title, github, website } = Astro.props;
   </P>
   {/* Desktop */}
   <div
-    class="absolute h-full w-full -translate-x-4 translate-y-4 border-4 border-black bg-black text-center text-opacity-100 opacity-80 ring-4 ring-black group-hover:-translate-y-[95%] group-hover:transition group-hover:duration-150"
+    class="absolute h-full w-full -translate-x-4 translate-y-4 border-4 border-black bg-black text-center text-opacity-100 opacity-80 ring-4 ring-black group-focus:-translate-y-[95%] group-focus:transition group-focus:duration-150 lg:group-hover:-translate-y-[95%] lg:group-hover:transition lg:group-hover:duration-150"
   >
     <div class="flex h-full items-center justify-center">
       <a
