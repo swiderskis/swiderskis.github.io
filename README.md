@@ -11,3 +11,5 @@ A personal website, powered by [Astro](https://astro.build/) 🚀 and [Tailwind]
 [Heropatterns](https://heropatterns.com/) - website background
 
 [Icons8](https://icons8.com/icon/62038/saturn-planet) - favicon
+
+[Heroicons](https://heroicons.com/) - globe icon
