@@ -4,15 +4,15 @@ import Layout from "../layouts/Layout.astro";
 import P from "../components/P.astro";
 import Card from "../components/Card.astro";
 
-type CardObject = {
+export type CardDetails = {
   title: string;
   github: string;
-  website: string | undefined;
+  website?: string;
   builtUsing: string[];
   description: string;
 };
 
-const projects: CardObject[] = [
+const projects: CardDetails[] = [
   {
     title: "io.chat",
     github: "https://github.com/swiderskis/io-chat",
@@ -73,18 +73,7 @@ const projects: CardObject[] = [
       </P>
       <Subheader>Featured projects</Subheader>
       <div class="grid grid-cols-1 gap-4 py-2 md:grid-cols-2">
-        {
-          projects.map((element) => (
-            <Card
-              title={element.title}
-              github={element.github}
-              website={element.website}
-              builtUsing={element.builtUsing}
-            >
-              {element.description}
-            </Card>
-          ))
-        }
+        {projects.map((project) => <Card cardDetails={project} />)}
       </div>
     </div>
   </main>

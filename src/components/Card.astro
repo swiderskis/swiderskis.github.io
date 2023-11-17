@@ -1,15 +1,13 @@
 ---
+import type { CardDetails } from "../pages/index.astro";
 import P from "./P.astro";
 import Subheader from "./Subheader.astro";
 
 export interface Props {
-  title: string;
-  github: string;
-  builtUsing: string[];
-  website?: string;
+  cardDetails: CardDetails;
 }
 
-const { title, github, website, builtUsing } = Astro.props;
+const cardDetails = Astro.props.cardDetails;
 ---
 
 <div
@@ -20,7 +18,7 @@ const { title, github, website, builtUsing } = Astro.props;
     class="absolute hidden h-full w-full -translate-x-4 translate-y-full border-4 border-black bg-black text-center text-opacity-100 opacity-80 ring-4 ring-black transition duration-150 lg:block lg:group-hover:-translate-y-2 lg:group-hover:transition lg:group-hover:duration-150"
   >
     <div class="flex h-full items-center justify-center text-gray-400">
-      <a href={github} target="_blank" rel="noreferrer noopener">
+      <a href={cardDetails.github} target="_blank" rel="noreferrer noopener">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="-1 -1 18 18"
@@ -35,10 +33,14 @@ const { title, github, website, builtUsing } = Astro.props;
         </svg>
       </a>
       {
-        website ? (
+        cardDetails.website ? (
           <>
             <div class="px-2" />
-            <a href={website} target="_blank" rel="noreferrer noopener">
+            <a
+              href={cardDetails.website}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -64,9 +66,9 @@ const { title, github, website, builtUsing } = Astro.props;
     class="absolute h-full w-full -translate-x-4 -translate-y-2 px-3 py-3 text-lime-950 lg:hidden"
   >
     {
-      website ? (
+      cardDetails.website ? (
         <a
-          href={website}
+          href={cardDetails.website}
           target="_blank"
           rel="noreferrer noopener"
           class="flex h-full w-full justify-end"
@@ -88,7 +90,7 @@ const { title, github, website, builtUsing } = Astro.props;
         </a>
       ) : (
         <a
-          href={github}
+          href={cardDetails.github}
           target="_blank"
           rel="noreferrer noopener"
           class="flex h-full w-full justify-end"
@@ -106,17 +108,20 @@ const { title, github, website, builtUsing } = Astro.props;
       )
     }
   </div>
-  <Subheader>{title}</Subheader>
+  <Subheader>{cardDetails.title}</Subheader>
   <P>
-    <slot />
+    {cardDetails.description}
   </P>
   <P>
     Built using {
-      builtUsing
-        .slice(0, builtUsing.length - 1)
-        .map((element) => `${element}${builtUsing.length === 2 ? "" : ", "}`)
+      cardDetails.builtUsing
+        .slice(0, cardDetails.builtUsing.length - 1)
+        .map(
+          (element) =>
+            `${element}${cardDetails.builtUsing.length === 2 ? "" : ", "}`
+        )
     }
-    {builtUsing.length === 1 ? "" : " and "}
-    {builtUsing.slice(-1)}
+    {cardDetails.builtUsing.length === 1 ? "" : " and "}
+    {cardDetails.builtUsing.slice(-1)}
   </P>
 </div>
