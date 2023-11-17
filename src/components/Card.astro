@@ -8,6 +8,22 @@ export interface Props {
 }
 
 const cardDetails = Astro.props.cardDetails;
+
+function builtUsingSentence(builtUsing: string[]): string {
+  const builtUsingSentence = "Built using ";
+
+  if (builtUsing.length === 1) {
+    return builtUsingSentence + builtUsing[0];
+  }
+
+  const builtUsingExcludingLast = builtUsing
+    .slice(0, builtUsing.length - 1)
+    .join(", ");
+  const lastBuiltUsing =
+    (builtUsing.length === 2 ? " and " : ", and ") + builtUsing.slice(-1);
+
+  return builtUsingSentence + builtUsingExcludingLast + lastBuiltUsing;
+}
 ---
 
 <div
@@ -113,15 +129,6 @@ const cardDetails = Astro.props.cardDetails;
     {cardDetails.description}
   </P>
   <P>
-    Built using {
-      cardDetails.builtUsing
-        .slice(0, cardDetails.builtUsing.length - 1)
-        .map(
-          (element) =>
-            `${element}${cardDetails.builtUsing.length === 2 ? "" : ", "}`
-        )
-    }
-    {cardDetails.builtUsing.length === 1 ? "" : " and "}
-    {cardDetails.builtUsing.slice(-1)}
+    {builtUsingSentence(cardDetails.builtUsing)}
   </P>
 </div>
